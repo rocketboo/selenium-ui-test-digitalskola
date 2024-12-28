@@ -14,12 +14,11 @@ describe('TestCase 1', function () {
     this.timeout(40000);
     let driver;
 
-    // Before the tests begin, initialize the WebDriver instance
     before(async function () {
         driver = await new Builder().forBrowser('chrome').build();
     });
 
-    // Before each test, login to the application
+ 
     beforeEach(async function () {
         const loginPage = new LoginPage(driver);
         await loginPage.navigate();
