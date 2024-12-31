@@ -1,28 +1,27 @@
-const {Builder, By, Key, until} = require('selenium-webdriver');
+const { Builder, By, Key, until } = require('selenium-webdriver');
 
 async function exampleTest() {
-
-    // membuat koneksi dengan browser driver
+    // Membuat koneksi dengan Browser Driver
     let driver = await new Builder().forBrowser('chrome').build();
 
-    //exception handling & conclusion
-    try{
-        //buka url di browser
-        await driver.get("https://google.com");
+    //Exception handling & Conclusion
+    try {
+        //Buka URL di broswer
+        await driver.get("https://www.google.com");
 
-        // mencari di searchbox
+        //Mencari di search box
         let searchBox = await driver.findElement(By.name('q'));
 
-        // simulate behavior typing "hello world"
-        await searchBox.sendKeys("hello world", Key.RETURN);
-        await driver.wait(until.elementLocated(By.id('result-stats')),10000);
+        //Simulate user behavior typing "Hello World"
+        await searchBox.sendKeys("Hello World!", Key.RETURN);
+        await driver.wait(until.elementLocated(By.id('result-stats')), 10000);
 
         let title = await driver.getTitle();
-        console.log(`page Title is: ${title}`);
+        console.log(`Page Title is: ${title}`);
     } finally {
-        //tutup browser
-        //await driver.quit();
+        //Tutup Browser
+        await driver.quit();
     }
-    
 }
+
 exampleTest();
